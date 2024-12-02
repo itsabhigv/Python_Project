@@ -22,8 +22,12 @@ class TestAutomationSuite:
         # Step 1: Read input file
         input_text = self.file_handler.read_file(INPUT_FILE)
         reg_numbers = self.extract_registration_numbers(input_text)
+
+
         # Step 2: Load expected output data
         expected_data = self.file_handler.read_csv(OUTPUT_FILE)
+
+
         # Step 3 & 4: Iterate through registrations, perform valuation, and validate
         for reg in reg_numbers:
             try:
@@ -41,6 +45,8 @@ class TestAutomationSuite:
                     self.logger.log_failure(reg, f"Mismatch: Expected {expected}, Got {result}")
             except Exception as e:
                 self.logger.log_failure(reg, f"Error occurred: {e}")
+
+                
 
 if __name__ == "__main__":
     suite = TestAutomationSuite()
